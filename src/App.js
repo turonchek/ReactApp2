@@ -13,7 +13,7 @@ function App() {
           <li key={el.id}>
             {el.isSpecial ? <h2 style = {style}>{el.title}</h2> : <h2>{el.title}</h2>}
             <p dangerouslySetInnerHTML={{__html: el.content}} />
-            <div>{el.dateCreated}</div>
+            {el.dateCreated && <span>{el.dateCreated}</span>}
             <ul>
               {el.categories && el.categories.map(category =>{
                 return <li key={category.id}>
