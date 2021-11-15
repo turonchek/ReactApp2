@@ -3,6 +3,10 @@ import './App.css';
 import data from './news.json';
 
 function App() {
+  const getFormattedDate = (dateStr) => {
+    const date = new Date(dateStr.replaceAll(` `, ``));
+    return date.toLocaleString();
+  }
   const style = {
     color: 'green'
   };
@@ -13,7 +17,7 @@ function App() {
           <li key={el.id}>
             {el.isSpecial ? <h2 style = {style}>{el.title}</h2> : <h2>{el.title}</h2>}
             <p dangerouslySetInnerHTML={{__html: el.content}} />
-            {el.dateCreated && <span>{el.dateCreated}</span>}
+            {el.dateCreated && <div>{getFormattedDate(el.dateCreated)}</div>}
             <ul>
               {el.categories && el.categories.map(category =>{
                 return <li key={category.id}>
