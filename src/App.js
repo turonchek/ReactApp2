@@ -15,7 +15,7 @@ function App() {
       <ul>
         {data.map((el, index) =>(
           <li key={el.id}>
-            {el.isSpecial ? <h2 style = {style}>{el.title}</h2> : <h2>{el.title}</h2>}
+            {el.link ? (el.isSpecial ? <a href={el.link}>{<h2 style = {style}>{el.title}</h2>}</a> : <a href={el.link}>{<h2>{el.title}</h2>}</a>) : <h2>{el.title}</h2>}
             <p dangerouslySetInnerHTML={{__html: el.content}} />
             {el.dateCreated && <div>{getFormattedDate(el.dateCreated)}</div>}
             <ul>
