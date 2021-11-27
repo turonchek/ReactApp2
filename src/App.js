@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import NewsPage from './components/news-page/news-page';
 import data from './news.json';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
   };
   return (
     <div>
-      <ul>
+      <NewsPage/>
+      {/* <ul>
         {data.map((el, index) =>(
           <li key={el.id}>
             {el.link ? (el.isSpecial ? <a href={el.link}>{<h2 style = {style}>{el.title}</h2>}</a> : <a href={el.link}>{<h2>{el.title}</h2>}</a>) : <h2>{el.title}</h2>}
@@ -30,7 +32,7 @@ function App() {
             {el.author && <div>{el.author}</div>}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
