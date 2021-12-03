@@ -1,22 +1,24 @@
 import React, {Component} from 'react';
-import NewsItem from '../NewsItem/NewsItem';
-
-// const getFormattedDate = (dateStr) => {
-//     const date = new Date(dateStr.replaceAll(` `, ``));
-//     return date.toLocaleString();
-// };
-// const style = {
-//     color: 'green'
-// };
+// import PropTypes from 'prop-types';
+import {NewsItem} from '../NewsItem/NewsItem';
 
 export class NewsList extends Component {
     render() {
+        let {items}=this.props;
         return <div>
             <ul>
-                {this.props.data.map((item, index) =>(
-                    <NewsItem {...item}/>
+                {items.map((item, index) =>(
+                    <NewsItem key={item.id} {...item}/>
                 ))}
             </ul>
         </div>;
     }
+}
+
+// NewsList.PropTypes = {
+//     items: PropTypes.array,
+// }
+
+NewsList.defaultProps = {
+    items: [],
 }

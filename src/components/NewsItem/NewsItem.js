@@ -9,7 +9,7 @@ const style = {
 };
 
 
-class NewsItem extends Component {
+export class NewsItem extends Component {
     getFormattedDate = (dateStr) => {
         const date = new Date(dateStr.replaceAll(` `, ``));
         return date.toLocaleString();
@@ -35,5 +35,3 @@ class NewsItem extends Component {
         </div>;
     }
 }
-
-export default NewsItem;
