@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './NewsFilters.css';
 
 const OPTIONS = [
@@ -11,17 +12,6 @@ export class NewsFilters extends Component {
     
     render() {
         let { checked, isChecked} = this.props;
-        // const dataFilter = items.filter(el=>{
-        //     if(checked[el.label] && !el.label) return false;
-        //     return true;
-        // })
-        // return <div className="btn-group">
-        //     {options.map((option,index) => (
-        //         <button className={checked[option.label] ? "btn-light" : undefined} key={index} onClick={
-        //             ()=>isChecked(option.label)
-        //         }>{option.label}</button>
-        //     ))}
-        // </div>;
         return <div className="btn-group">
         {OPTIONS.map((option,index) => (
             <button className={checked[option.label] ? "btn-light" : undefined} key={index} onClick={
@@ -30,4 +20,13 @@ export class NewsFilters extends Component {
         ))}
     </div>;
     }
+}
+
+NewsFilters.propTypes={
+    checked: PropTypes.shape({
+        isPhoto:PropTypes.bool,
+        isLink:PropTypes.bool,
+        isSpecial:PropTypes.bool
+    }).isRequired,
+    isChecked:PropTypes.func.isRequired 
 }

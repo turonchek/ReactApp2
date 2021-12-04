@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-
-const getFormattedDate = (dateStr) => {
-    const date = new Date(dateStr.replaceAll(` `, ``));
-    return date.toLocaleString();
-};
+import PropTypes from 'prop-types';
 const style = {
     color: 'green'
 };
@@ -20,7 +16,7 @@ export class NewsItem extends Component {
             <li key={id}>
                     {link ? (isSpecial ? <a href={link}>{<h2 style = {style}>{title}</h2>}</a> : <a href={link}>{<h2>{title}</h2>}</a>) : <h2>{title}</h2>}
                     <p dangerouslySetInnerHTML={{__html: content}} />
-                    {dateCreated && <div>{getFormattedDate(dateCreated)}</div>}
+                    {dateCreated && <div>{this.getFormattedDate(dateCreated)}</div>}
                     <ul>
                     {categories && categories.map(category =>{
                         return <li key={category.id}>
@@ -34,4 +30,21 @@ export class NewsItem extends Component {
                 </li>
         </div>;
     }
+}
+
+NewsItem.propTypes = {
+    item: PropTypes.shape({
+            id:PropTypes.string.isRequired,
+            title:PropTypes.string.isRequired,
+            content:PropTypes.string.isRequired,
+            isSpecial:PropTypes.bool.isRequired,
+            dateCreated:PropTypes.string.isRequired,
+            categories:PropTypes.arrayOf(PropTypes.shape({
+                id:PropTypes.string.isRequired,
+                name:PropTypes.string.isRequired
+            })).isRequired,
+            link:PropTypes.string.isRequired,
+            photo:PropTypes.string.isRequired,
+            author:PropTypes.string.isRequired
+        }).isRequired
 }

@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 import {NewsFilters} from '../NewsFilters/NewsFilters';
 import { NewsList } from '../NewsList/NewsList';
 
-const OPTIONS = [
-    { label: 'photo'},
-    { label: 'link'},
-    { label: 'special'}
-];
-
 export class NewsPage extends Component {
     constructor(props){
             super(props);
@@ -18,7 +12,6 @@ export class NewsPage extends Component {
                     isSpecial:false,
                 },
             }
-            // console.log(this.state.checked)
         }
     handleSelect = (value) =>{
         console.log(value)
@@ -31,7 +24,6 @@ export class NewsPage extends Component {
         console.log(value,this.state.checked[value])
     }
     render() {
-        console.log(this.state);
         const checked=this.state.checked;
         let {isPhoto, isLink, isSpecial} = checked;
         const {data}=this.props;
@@ -42,7 +34,7 @@ export class NewsPage extends Component {
             return true;
         })
         return <div>
-            <NewsFilters items={data} checked={checked} isChecked={this.handleSelect}/>
+            <NewsFilters checked={checked} isChecked={this.handleSelect}/>
             <NewsList items={dataFilter}/>
         </div>;
     }
