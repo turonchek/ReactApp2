@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { CategoryItem } from '../CategoryItem/CategoryItem';
 const style = {
     color: 'green'
 };
@@ -17,13 +18,9 @@ export class NewsItem extends Component {
                     {link ? (isSpecial ? <a href={link}>{<h2 style = {style}>{title}</h2>}</a> : <a href={link}>{<h2>{title}</h2>}</a>) : <h2>{title}</h2>}
                     <p dangerouslySetInnerHTML={{__html: content}} />
                     {dateCreated && <div>{this.getFormattedDate(dateCreated)}</div>}
-                    <ul>
-                    {categories && categories.map(category =>{
-                        return <li key={category.id}>
-                                <h3>{category.name}</h3>
-                            </li>
-                    })}
-                    </ul>
+                    {categories && categories.map(category => (
+                        <CategoryItem key={category.id} {...category}/>
+                    ))}
                     {link && <div><a href={link}>{link}</a></div>}
                     {photo && <img alt="" src={photo}></img>}
                     {author && <div>{author}</div>}
@@ -46,5 +43,5 @@ NewsItem.propTypes = {
             link:PropTypes.string.isRequired,
             photo:PropTypes.string.isRequired,
             author:PropTypes.string.isRequired
-        }).isRequired
+        })
 }
