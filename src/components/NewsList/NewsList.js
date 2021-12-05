@@ -5,7 +5,7 @@ import {NewsItem} from '../NewsItem/NewsItem';
 export class NewsList extends Component {
     render() {
         let {items}=this.props;
-        console.log(items)
+        // console.log(items)
         return <div>
             <ul>
                 {items.map((item, index) =>(
